@@ -1,5 +1,5 @@
-# Option 3
-Similar to option 2 though through use of s3_object and locals, terraform checks for the presence of the function code bundle with the appropriate name/tag/meta and invokes the packaging script if it doesn't exist.
+# Option 5
+Similar to option 2, however the lambda terraform deployed is done with a dummy function, a deployment script is added to push the bundled code from S3 to the function when ready
 
 ![diagram](diagram.png)
 
@@ -15,9 +15,8 @@ Similar to option 2 though through use of s3_object and locals, terraform checks
 
 
 ### Cons
- - Potential for over engineering
- - Creative use of tagging objects to resolve the identification of package tags
- - Blurs the lines between TF as declarative and building packaging and the imperative task of versioning and bundling code 
+ - Potential for over-engineering
+ - Risk that dummy code is left deployed
 
 ### Pros
  - Automates some of the manual steps in seperation of the workflow

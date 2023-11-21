@@ -1,4 +1,4 @@
-# Option 3
+# Option 4
 Similar to Option 2 and 3. Have terraform check for the presence of the code package in S3, if it doesn't exist, terraform will bundle the package, upload it and use that reference.
 
 ![diagram](diagram.png)
