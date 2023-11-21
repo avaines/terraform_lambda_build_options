@@ -1,4 +1,9 @@
+# PoC Constructs
 **/archive/
+**/**.ignore.**
+**/**.zip
+
+# Terraform
 **/.terraform.lock.hcl
 **/terraform.tfstate
 **/terraform.tfstate.backup
