@@ -3,26 +3,8 @@ Similar to option 2 though through use of s3_object and locals, terraform checks
 
 ![diagram](diagram.png)
 
+Whilst this is the next obvious step from Option 2 to achieve an automated approach without the issues inherent in using the archive_file resource, Terraform doesn't really provide "If not exist create it" operations in this way. It's an imperative rather than declarative approach, so now what Terraform was designed for, this can be worked around by doing something like getting the objects in the bucket that matches the one we want, if one exists then great, reference it with a s3_object data resource. But if it's missing run the script to create the package and upload it.
 
-## Requirements
-| Requirement | Met |
-| ------------|-----|
-| Lambda function code should be versioned, promotable, and targetable  | :heavy_check_mark: |
-| An environment should be able to use a specific code version | :heavy_check_mark: |
-| The code a function is running should be identifiable and retrievable for analysis | :heavy_check_mark: |
-| Code must be testable and tested | :heavy_check_mark: |
-| Functions should not be replaced unless change has occured | :heavy_check_mark: |
+The problem with that is the null resource required to create the object only works on an apply, so your plans would fail till the object exists
 
-
-### Cons
- - Potential for over engineering
- - Creative use of tagging objects to resolve the identification of package tags
- - Blurs the lines between TF as declarative and building packaging and the imperative task of versioning and bundling code 
-
-### Pros
- - Automates some of the manual steps in seperation of the workflow
- - Medium complexity
- - Meets all of the requirements
-
-
-### Notes
+Theres a better explanation of why this doesn't work here: https://discuss.hashicorp.com/t/create-terraform-resource-s3-bucket-object-if-already-doesnt-exists/24247
