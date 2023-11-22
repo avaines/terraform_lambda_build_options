@@ -13,7 +13,7 @@ Similar to option 2 though through use of s3_object and locals, terraform checks
 ![diagram](option3/diagram.png)
 
 ## Option 4
-Similar to Option 2 and 3. Have terraform check for the presence of the code package in S3, if it doesn't exist, terraform will bundle the package, upload it and use that reference.
+Similar to Option 1 & 2. Have Terraform manage the archive, but store it in S3 for retreval, rolling the code in to lambda only if the commit reference for the build has changed.
 ![diagram](option4/diagram.png)
 
 ## Option 5

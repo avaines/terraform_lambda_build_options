@@ -1,6 +1,7 @@
 # Option 4
-Similar to Option 2 and 3. Have terraform check for the presence of the code package in S3, if it doesn't exist, terraform will bundle the package, upload it and use that reference.
+Similar to Option 2 and 3. Have Terraform check for the presence of the code package in S3, if it doesn't exist, terraform will bundle the package, upload it and use that reference.
 
+The resulting solution is also similar to option 1 in that Terraform handles the build of the package, and is also uploading a potentially larger amount of data than is ideal. Though it does meet more requirements.
 ![diagram](diagram.png)
 
 
