@@ -1,6 +1,7 @@
+import sys
 
 def lambda_handler(event,context):
-    print("Helo World")
+    return f"Helo World, {sys.version}!"
 
 
 if __name__ == "__main__":

@@ -14,6 +14,16 @@ Similar to option 2, however the lambda terraform deployed is done with a dummy 
 | Functions should not be replaced unless change has occured | :heavy_check_mark: |
 
 
+## Build details
+Running the lambda build script and terraform apply from no deployed ifrastructure
+
+| Build time | Statefile size |
+| --- | --- |
+| 21s | 8K |
+
+![graph](graph.png)
+
+
 ### Cons
  - Potential for over-engineering
  - Risk that dummy code is left deployed

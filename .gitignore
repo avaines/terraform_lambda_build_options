@@ -1,7 +1,9 @@
 # PoC Constructs
+**/.DS_Store
 **/archive/
 **/**.ignore.**
 **/**.zip
+**/src/staging/
 
 # Terraform
 **/.terraform.lock.hcl

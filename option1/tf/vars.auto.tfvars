@@ -1,2 +1,2 @@
 name = "option1"
-region = "eu-west-2"
+region = "us-east-1"

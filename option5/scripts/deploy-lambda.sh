@@ -2,14 +2,10 @@
 set -euo pipefail
 
 # Quick script to deploy a function
-#  ./build-lambda.sh test_func option5-lambda
-
-pushd "../../src/${1}"
-
-zip -9rX "../${1}.zip" .
+#  ./deploy-lambda.sh s3_bucket s3_object lambda_function_name
 
 aws lambda update-function-code \
-  --function-name "${2}" \
-  --zip-file "fileb://../${1}.zip"
-
-popd
+  --s3-bucket "${1}" \
+  --s3-key "${2}" \
+  --function-name "${3}" \
+  --publish

@@ -1,8 +1,8 @@
 locals {
-    default_tags = {
-        Project = "lambda deployment mechanism poc"
-        Name    = var.name
-    }
+  default_tags = {
+    Project = "lambda deployment mechanism poc"
+    Name    = var.name
+  }
 }
 
 data "aws_iam_policy_document" "assume_role" {
@@ -29,11 +29,13 @@ data "aws_s3_object" "lambda" {
 }
 
 resource "aws_lambda_function" "lambda" {
-  filename      = data.aws_s3_object.lambda.key
   function_name = "${var.name}-lambda"
   role          = aws_iam_role.lambda.arn
   handler       = "main.lambda_handler"
   runtime       = "python3.11"
+
+  s3_bucket = var.function_s3_bucket_name
+  s3_key    = data.aws_s3_object.lambda.key
 
   source_code_hash = data.aws_s3_object.lambda.metadata[var.function_deploy_trigger_key]
 }

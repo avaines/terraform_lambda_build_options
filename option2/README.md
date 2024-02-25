@@ -14,6 +14,17 @@ Entirely decoupled by having a script that manages the packaging of the Lambda
 | Functions should not be replaced unless change has occured | :wavy_dash: |
 
 
+## Build details
+Running the lambda build script and terraform apply from no deployed ifrastructure
+
+| Build time | Statefile size |
+| --- | --- |
+| 20s | 8K |
+
+![graph](graph.png)
+![diagram](exampleS3Object.png)
+
+
 ### Cons
  - Can be annoying to work with
  - Code packages must exist to perform a plan, may end up building a package before confirming an apply action resulting in non-confirmed code being uploaded
@@ -21,6 +32,7 @@ Entirely decoupled by having a script that manages the packaging of the Lambda
  - Potential for over engineering
  - Creative use of tagging objects to resolve the identification of package tags
  - If the packaging of the function fails for some reason, an older code package could be used instead
+
 
 ### Pros
  - TF is declarative and building packaging and versioning of code should be imperative in nature
