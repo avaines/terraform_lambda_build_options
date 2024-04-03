@@ -15,7 +15,7 @@ variable "function_s3_bucket_name"{
 
 variable "function_deploy_trigger_key" {
   type = string
-  description = "AWS Region"
+  description = "Trigger for deploying lambda code bundles, can be 'hash' or 'commit'"
   default = "hash"
 
   validation {
