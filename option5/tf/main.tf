@@ -43,5 +43,10 @@ resource "aws_lambda_function" "lambda" {
   handler       = "main.lambda_handler"
   runtime       = "python3.11"
 
-  source_code_hash = data.archive_file.lambda.output_base64sha256
+  lifecycle {
+    ignore_changes = [
+      last_modified,
+      source_code_hash,
+    ]
+  }
 }
